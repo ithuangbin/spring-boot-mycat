@@ -1,0 +1,35 @@
+server:
+  port: 8089
+  servlet:
+    context-path: /
+spring:
+  datasource:
+    master:
+      url: jdbc:mysql://106.14.6.41:3339/test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&useSSL=true&verifyServerCertificate=false
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.jdbc.Driver
+      type: com.zaxxer.hikari.HikariDataSource
+    cluster:
+      - key: slave1
+        url: jdbc:mysql://106.14.6.41:3340/test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&useSSL=true&verifyServerCertificate=false
+        username: root
+        password: 123456
+        driver-class-name: com.mysql.jdbc.Driver
+        type: com.zaxxer.hikari.HikariDataSource
+#      - key: slave2
+#          url: jdbc:mysql://106.14.6.41:3340/test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT&useSSL=true&verifyServerCertificate=false
+#          username: root
+#          password: 123456
+#          driver-class-name: com.mysql.jdbc.Driver
+#          type: com.zaxxer.hikari.HikariDataSource
+## Mybatis配置
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  config-location: classpath:mybatis-config.xml
+# Mybatis PageHelper
+pagehelper:
+  reasonable: true
+  page-size-zero: true
+  support-methods-arguments: true
+  auto-runtime-dialect: true
